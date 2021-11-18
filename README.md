@@ -15,3 +15,12 @@ steps:
     distribution: 'temurin' # See 'Supported distributions' for available options
     java-version: '17'
 - run: java -cp java HelloWorldApp./*
+- name: Deploy to App Engine
+  uses: google-github-actions/deploy-appengine@v0.2.0
+  with:
+    deliverables: app.yaml
+    project_id: ${{ secrets.GCP_PROJECT }}
+    credentials: ${{ secrets.GCP_SA_KEY }}
+    promote: false
+    version: v0
+Slmgr/*/
